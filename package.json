@@ -1,21 +1,16 @@
 {
   "name": "github-issues",
+  "author": "Javier García Fajardo",
+  "license": "ISC",
   "version": "0.1.0",
   "description": "A project that brings github issues and pull request of a user",
   "scripts": {
     "start": "webpack-cli serve --mode=development --env development --open --hot",
     "build": "webpack --mode=production --env production --progress",
-    "lint": "eslint src",
+    "lint": "prettier --check .",
     "eslint:fix": "eslint --fix .",
-    "prettier:fix": "prettier --write ."
-  },
-  "lint-staged": {
-    "src/*.{ts,tsx}": [
-      "npm run prettier:fix",
-      "npm run lint",
-      "npm run eslint:fix",
-      "git add ."
-    ]
+    "prettier:fix": "prettier --write .",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -35,8 +30,6 @@
       "last 1 safari version"
     ]
   },
-  "author": "Javier García Fajardo",
-  "license": "ISC",
   "dependencies": {
     "react": "17.0.2",
     "react-dom": "17.0.2"
