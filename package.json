@@ -5,9 +5,17 @@
   "scripts": {
     "start": "webpack-cli serve --mode=development --env development --open --hot",
     "build": "webpack --mode=production --env production --progress",
-    "lint": "prettier --check .",
+    "lint": "eslint src",
     "eslint:fix": "eslint --fix .",
     "prettier:fix": "prettier --write ."
+  },
+  "lint-staged": {
+    "src/*.{ts,tsx}": [
+      "npm run prettier:fix",
+      "npm run lint",
+      "npm run eslint:fix",
+      "git add ."
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -53,9 +61,9 @@
     "eslint-plugin-testing-library": "5.0.3",
     "fork-ts-checker-webpack-plugin": "6.5.0",
     "html-webpack-plugin": "5.5.0",
-    "husky": "^7.0.4",
+    "husky": "7.0.4",
     "jest": "27.4.7",
-    "lint-staged": "^12.2.1",
+    "lint-staged": "12.2.1",
     "node-sass": "7.0.1",
     "prettier": "2.5.1",
     "style-loader": "3.3.1",
