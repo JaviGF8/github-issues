@@ -1,5 +1,8 @@
+import config from 'config';
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import Button from 'components/base/Button';
 
 import utils from 'utils';
 
@@ -11,12 +14,17 @@ const PullRequestCard: FC<PullRequestCardProps> = ({ pullRequest }) => {
   const { t } = useTranslation();
   return (
     <div className="pull-request-card">
-      <h4>{pullRequest.title}</h4>
+      <h4>
+        <Button
+          color="transparent"
+          text={pullRequest.title}
+          to={`${config.url.pr}/${pullRequest.number}`}
+        />
+      </h4>
       <div>
         <span>{t('common.user')}:</span> {pullRequest.user.login}
       </div>
-      <div>
-        <span>{t('common.createdAt')}:</span>{' '}
+      <div className="pull-request-date">
         {utils.dateManager.dateToString(new Date(pullRequest.created_at))}
       </div>
       {pullRequest.labels?.length > 0 && (

@@ -1,5 +1,6 @@
 import config from 'config';
 import React, { useReducer, FC, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import IssueType from 'models/types/issue';
 import PullRequestType from 'models/types/pullRequest';
@@ -10,6 +11,11 @@ import { DispatchTypes } from 'reducers/appContext/types.d';
 
 const AppProvider: FC = ({ children }) => {
   const [auth, dispatchApp] = useReducer(reducer, initialState);
+  const { t } = useTranslation();
+
+  const setError = (error?: string) => {
+    dispatchApp({ type: DispatchTypes.SET_ERROR, payload: error });
+  };
 
   const setIssues = (issues: IssueType[]) => {
     dispatchApp({ type: DispatchTypes.SET_ISSUES, payload: issues });
@@ -43,9 +49,11 @@ const AppProvider: FC = ({ children }) => {
       setIssues(issues.data);
       setPullRequests(prs.data);
       setLoading(false);
+      setError();
     } catch {
       setIssues([]);
       setPullRequests([]);
+      setError(t('common.error'));
       setLoading(false);
     }
   };

@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Loader from 'components/base/Loader';
 import Page from 'components/base/Page';
 
 import IssueCard from 'components/issue/Card';
@@ -11,22 +12,14 @@ import useAppContext from 'hooks/useAppContext';
 import './index.scss';
 
 const LandingPage: FC = () => {
-  const { issues, loading, pullRequests, repository, user } = useAppContext();
+  const { error, issues, loading, pullRequests, repository, user } = useAppContext();
   const { t } = useTranslation();
 
   return (
     <Page id="landing-page">
-      {loading && <div>LOADING...</div>}
-      {repository && user && !loading && (
+      {loading && <Loader />}
+      {repository && user && !loading && !error && (
         <div className="columns">
-          <div>
-            <div>
-              <span>{t('common.user')}:</span> {user}
-            </div>
-            <div>
-              <span>{t('common.repository')}:</span> {repository}
-            </div>
-          </div>
           <div className="column">
             <h3>{t('common.pullRequests')}</h3>
             <div>
@@ -50,6 +43,7 @@ const LandingPage: FC = () => {
         </div>
       )}
       {(!repository || !user) && !loading && <div>{t('common.noRepository')}</div>}
+      {!loading && error && <div>{error}</div>}
     </Page>
   );
 };

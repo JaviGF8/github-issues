@@ -1,6 +1,7 @@
 const common = {
   comments: 'Comentarios',
   createdAt: 'Fecha',
+  error: 'El repositorio o usuario que está buscando no existe',
   issue: 'Issue',
   issues: 'Issues',
   noIssues: 'Este repositorio no tiene issues',

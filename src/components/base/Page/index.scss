@@ -8,8 +8,25 @@
 
   &:not(.fullpage) {
     max-width: calc(100vw - #{$sidebar-width} - #{$size-xxl});
-    min-height: calc(100vh - #{$size-xxl});
-    padding: $size-xl;
-    padding-left: calc(#{$sidebar-width} + #{$size-xl});
+    min-height: calc(100vh - #{$size-xxl} - #{$size-xl});
+    padding: calc(#{$topbar-height} + #{$size-lg}) $size-xl $size-xl
+      calc(#{$sidebar-width} + #{$size-xl});
+  }
+
+  @media screen and (max-width: $screen-lg) {
+    &:not(.fullpage) {
+      max-width: calc(100vw - #{$sidebar-width-small} - #{$size-xl});
+      padding: calc(#{$topbar-height} + #{$size-lg}) $size-lg $size-lg
+        calc(#{$sidebar-width-small} + #{$size-lg});
+    }
+  }
+
+  @media screen and (max-width: $screen-md) {
+    &:not(.fullpage) {
+      max-width: calc(100vw - #{$size-xl});
+      min-height: calc(100vh - #{$size-xxl} - #{$size-xl} - #{$sidebar-height-small});
+      padding: calc(#{$topbar-height} + #{$sidebar-height-small} + #{$size-lg}) $size-lg $size-lg
+        $size-lg;
+    }
   }
 }

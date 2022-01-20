@@ -2,12 +2,18 @@ import IssueType from 'models/types/issue';
 import PullRequestType from 'models/types/pullRequest';
 
 export enum DispatchTypes {
+  SET_ERROR = 'SET_ERROR',
   SET_ISSUES = 'SET_ISSUES',
   SET_LOADING = 'SET_LOADING',
   SET_PULL_REQUESTS = 'SET_PULL_REQUESTS',
   SET_REPOSITORY = 'SET_REPOSITORY',
   SET_USER = 'SET_USER',
 }
+
+type ErrorActionType = {
+  type: DispatchTypes.SET_ERROR;
+  payload?: string;
+};
 
 type IssuesActionType = {
   type: DispatchTypes.SET_ISSUES;
@@ -35,6 +41,7 @@ type UserActionType = {
 };
 
 export type Action =
+  | ErrorActionType
   | IssuesActionType
   | LoadingActionType
   | PullRequestsActionType

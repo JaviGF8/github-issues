@@ -13,14 +13,16 @@ import './index.scss';
 const Sidebar: FC = () => {
   const { loading, repository, search, user } = useAppContext();
   const [disableSearch, setDisableSearch] = useState<boolean>(false);
-  const [searchRepo, setSearchRepo] = useState<string>();
-  const [searchUser, setSearchUser] = useState<string>();
+  const [searchRepo, setSearchRepo] = useState<string>('');
+  const [searchUser, setSearchUser] = useState<string>('');
   const { t } = useTranslation();
   const { pathname } = useLocation();
 
-  const onSearch = () => {
+  const onSearch = async () => {
     if (searchUser && searchRepo) {
       search(searchUser, searchRepo);
+      setSearchRepo('');
+      setSearchUser('');
     }
   };
 

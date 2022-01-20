@@ -1,5 +1,8 @@
+import config from 'config';
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import Button from 'components/base/Button';
 
 import utils from 'utils';
 
@@ -12,16 +15,19 @@ const IssueCard: FC<IssueCardProps> = ({ issue }) => {
   return (
     <div className="issue-card">
       <div className="issue-title">
-        <h4>{issue.title}</h4>
+        <h4>
+          <Button
+            color="transparent"
+            text={issue.title}
+            to={`${issue.pull_request ? config.url.pr : config.url.issue}/${issue.number}`}
+          />
+        </h4>
         {issue.pull_request && <span>(PR)</span>}
       </div>
       <div>
         <span>{t('common.user')}:</span> {issue.user.login}
       </div>
-      <div>
-        <span>{t('common.createdAt')}:</span>{' '}
-        {utils.dateManager.dateToString(new Date(issue.created_at))}
-      </div>
+      <div className="issue-date">{utils.dateManager.dateToString(new Date(issue.created_at))}</div>
       <div>
         <span>{t('common.comments')}:</span> {issue.comments}
       </div>
