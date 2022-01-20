@@ -1,0 +1,64 @@
+@import 'assets/styles/_constants.scss';
+@import 'assets/styles/_mixins.scss';
+
+.custom-button {
+  @include default-transition;
+  @include flex-center;
+  padding: $size-md $size-lg;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: $font-md;
+  border: 0;
+
+  .button-prefix {
+    margin-right: $size-md;
+  }
+  .button-suffix {
+    margin-left: $size-md;
+  }
+
+  .button-text {
+    width: max-content;
+  }
+
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+
+  &.transparent {
+    background-color: transparent;
+    color: $gray-700;
+  }
+
+  &.primary {
+    background-color: $primary;
+    color: $white;
+    &:not(.disabled) {
+      &:focus,
+      &:hover {
+        background-color: $primary-light;
+      }
+    }
+  }
+
+  &.secondary {
+    color: $white;
+    background-color: $secondary;
+    &:focus,
+    &:hover {
+      background-color: $secondary-dark;
+    }
+  }
+
+  &.disabled,
+  &.disabled:hover {
+    background-color: $gray-300;
+    color: $gray-500;
+    cursor: no-drop;
+  }
+
+  svg {
+    stroke-width: 1;
+  }
+}

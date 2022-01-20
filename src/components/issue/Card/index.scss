@@ -1,0 +1,51 @@
+@import 'assets/styles/_constants.scss';
+@import 'assets/styles/_mixins.scss';
+
+.issue-card {
+  @include flex-column;
+  padding: $size-lg;
+  background-color: $white;
+
+  > *:not(:last-child) {
+    margin-bottom: $size-md;
+  }
+
+  .issue-title {
+    @include flex-space;
+
+    h4 {
+      margin: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    span {
+      margin-left: $size-md;
+      background-color: $primary-light;
+      padding: $size-sm;
+      font-size: $font-xs;
+      color: $white;
+    }
+  }
+
+  > div:not(.issue-labels) {
+    span {
+      font-size: $font-sm;
+    }
+  }
+
+  .issue-labels {
+    @include flex-start;
+    margin-top: -$size-md;
+
+    > span {
+      background-color: $secondary-light;
+      padding: $size-md;
+      margin-top: $size-md;
+      margin-right: $size-lg;
+      color: $white;
+      font-size: $font-xs;
+    }
+  }
+}

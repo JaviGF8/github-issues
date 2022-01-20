@@ -1,0 +1,15 @@
+@import 'assets/styles/_constants.scss';
+@import 'assets/styles/_mixins.scss';
+
+.custom-page {
+  @include flex-column;
+  width: 100%;
+  position: relative;
+
+  &:not(.fullpage) {
+    max-width: calc(100vw - #{$sidebar-width} - #{$size-xxl});
+    min-height: calc(100vh - #{$size-xxl});
+    padding: $size-xl;
+    padding-left: calc(#{$sidebar-width} + #{$size-xl});
+  }
+}
