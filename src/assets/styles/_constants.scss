@@ -7,23 +7,17 @@ $browser-context: 16;
 // ***********
 // COLORS
 // ***********
-$primary: #448dcb;
-$primary-dark: #214d72;
-$primary-light: #47bce6;
+$primary: #2e86ab;
+$primary-dark: #125680;
+$primary-light: #6daac4;
 
-$secondary: #ff53b9;
-$secondary-dark: #ff83d4;
-$secondary-light: #ffdaf2;
+$secondary: #902d5f;
+$secondary-dark: #611132;
+$secondary-light: #b16c8f;
 
-$footer: #163b5a;
-$footer-letter: #3f84bf;
-
-$accent-orange: #ff6f00;
-$accent-orange-2: #f09e03;
-$accent-yellow: #ffe705;
-$accent-green: #60d981;
-$accent-blue: #47bce6;
-$accent-acqua: #bdface;
+$accent-orange: #f18f01;
+$accent-orange-2: #c73e1d;
+$accent-purple: #3b1f2b;
 
 $gray-100: #f9fafa;
 $gray-300: #edecee;
@@ -41,10 +35,10 @@ $error: #f44336;
 // ***********
 // FONT
 // ***********
-$font-xs: rem(10);
-$font-sm: rem(12);
-$font-md: rem(14);
-$font-lg: rem(16);
+$font-xs: rem(12);
+$font-sm: rem(14);
+$font-md: rem(16);
+$font-lg: rem(18);
 $font-xl: rem(20);
 $font-subtitle: rem(24);
 $font-title: rem(32);
@@ -58,6 +52,11 @@ $size-md: rem(8);
 $size-lg: rem(16);
 $size-xl: rem(32);
 $size-xxl: rem(64);
+
+$sidebar-width: rem(300);
+$sidebar-width-small: rem(200);
+$sidebar-height-small: $size-xxl;
+$topbar-height: rem(48);
 
 // ***********
 // TRANSITIONS

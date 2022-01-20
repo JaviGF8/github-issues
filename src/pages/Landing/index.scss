@@ -1,7 +1,59 @@
 @import 'assets/styles/_constants.scss';
 @import 'assets/styles/_mixins.scss';
 
+$page-max-height: calc(100vh - #{$size-xxl} - #{$size-xl});
+
 #landing-page {
-  @include flex-center;
-  min-height: 100vh;
+  .columns {
+    display: flex;
+    flex-wrap: wrap;
+
+    > div {
+      width: 100%;
+      overflow: hidden;
+
+      &.column {
+        position: relative;
+        padding: $size-lg;
+        width: calc(50% - #{$size-xl});
+        max-height: calc(#{$page-max-height} - #{$size-xl});
+
+        @media screen and (max-width: $screen-lg) {
+          width: 100%;
+        }
+
+        > div {
+          @include inset-shadow;
+          height: 100%;
+          background-color: rgba($gray-500, 0.5);
+          max-height: calc(#{$page-max-height} - #{$size-xxl} - #{$size-sm});
+          overflow-x: hidden;
+          overflow-y: auto;
+
+          > div {
+            margin: $size-lg auto;
+            width: calc(100% - #{$size-xxl});
+            &:not(.no-elements) {
+              @include default-shadow;
+            }
+          }
+
+          .no-elements {
+            margin-bottom: 0;
+            padding: $size-md;
+            background-color: $white;
+            width: 100%;
+            text-align: center;
+          }
+        }
+
+        h3 {
+          padding: $size-lg;
+          margin: 0;
+          background-color: $secondary;
+          color: $white;
+        }
+      }
+    }
+  }
 }
