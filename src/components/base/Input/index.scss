@@ -1,0 +1,379 @@
+@import 'assets/styles/_constants.scss';
+@import 'assets/styles/_mixins.scss';
+
+.custom-input:not(.checkbox):not(.radio) {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-top: $size-lg;
+
+  > label {
+    position: absolute;
+    color: $gray-700;
+    font-weight: 100;
+    font-size: $font-md;
+    left: $size-md;
+    transform: translateY($size-md);
+    @include default-transition;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &:not(.filled):not(.focused):not(.prefixed) {
+    &.hovered {
+      > label {
+        left: $size-md;
+      }
+    }
+  }
+  &.prefixed:not(.filled):not(.focused) {
+    > label {
+      left: calc(#{$size-xl} - #{$size-sm});
+    }
+    &.hovered {
+      > label {
+        left: $size-xl;
+      }
+    }
+  }
+
+  > div {
+    @include default-transition;
+    width: 100%;
+    border: rem(1) solid transparent;
+    background-color: $white;
+    position: relative;
+
+    > div {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-height: $size-xl;
+
+      .hidden-input {
+        display: none;
+      }
+
+      input {
+        width: 100%;
+        padding: $size-md;
+        border: 0;
+        outline: none;
+        @include default-transition;
+        color: $gray-900;
+        background-color: transparent;
+      }
+
+      .input-prefix,
+      .input-suffix {
+        @include flex-center;
+        @include default-transition;
+        color: $gray-700;
+        width: calc(#{$size-xl} - #{$size-md});
+        padding: 0 $size-sm;
+        margin-top: -(rem(1));
+      }
+
+      .clear-button {
+        @include default-transition;
+        padding: $size-sm;
+        &::after {
+          padding: $size-xs;
+          font-size: $font-lg;
+          line-height: 1;
+          text-align: center;
+          display: table-cell;
+          vertical-align: middle;
+          content: '\00d7';
+        }
+
+        &:focus {
+          color: $primary-dark;
+        }
+      }
+    }
+  }
+  &.disabled {
+    > div {
+      background-color: $gray-300;
+      cursor: no-drop;
+      > div {
+        input {
+          cursor: no-drop;
+        }
+      }
+    }
+  }
+  &:not(.disabled) {
+    &.hovered,
+    &:hover,
+    &:focus,
+    &:active {
+      > div {
+        background-color: $white;
+      }
+    }
+  }
+  &:not(.disabled):not(.error) {
+    &.hovered,
+    &:hover,
+    &:focus,
+    &:active {
+      > div {
+        border-color: $secondary;
+      }
+    }
+  }
+  &.focused,
+  &.filled {
+    > label {
+      font-size: $font-xs;
+      left: 0;
+      transform: translateY(-$size-lg);
+    }
+  }
+
+  span {
+    color: $error;
+    font-size: $font-sm;
+    @include default-transition;
+
+    &.hidden {
+      font-size: 0;
+    }
+  }
+
+  &.focused {
+    > label {
+      font-size: $font-xs;
+      color: $secondary;
+    }
+    > div {
+      border-color: $secondary;
+      > div {
+        .input-prefix,
+        .input-suffix,
+        .clear-button {
+          color: $secondary;
+        }
+      }
+    }
+  }
+
+  &.error {
+    > label {
+      color: $error;
+    }
+    > div {
+      border-color: $error;
+      > div {
+        .input-prefix,
+        .input-suffix {
+          color: $error;
+        }
+      }
+    }
+  }
+}
+
+/*
+* CHECKBOX
+*/
+.custom-input.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+
+  label {
+    margin-left: $size-md;
+    color: $gray-800;
+  }
+
+  > div {
+    height: rem(20);
+    width: rem(20);
+    > div {
+      display: block;
+      position: relative;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      height: rem(20);
+      width: rem(20);
+
+      > input {
+        height: rem(20);
+        width: rem(20);
+        opacity: 0;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        &:disabled {
+          cursor: no-drop;
+        }
+      }
+
+      .checkmark {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: rem(20);
+        width: rem(20);
+        border: rem(1) solid $gray-500;
+        pointer-events: none;
+        border-radius: $size-sm;
+        @include default-transition;
+
+        &:disabled {
+          cursor: no-drop;
+        }
+
+        &:after {
+          @include default-transition;
+          content: '';
+          position: absolute;
+          display: none;
+          left: rem(6.5);
+          top: rem(3);
+          width: rem(5);
+          height: rem(10);
+          border: solid $white;
+          border-width: 0 $size-xs $size-xs 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+
+      input:checked ~ .checkmark {
+        background-color: $primary-dark;
+        &:after {
+          display: block;
+        }
+      }
+
+      input:checked:hover:not([disabled]) ~ .checkmark {
+        background-color: $primary-dark;
+      }
+      input:checked:focus:not([disabled]) ~ .checkmark {
+        outline: max(2px, 1px) solid $primary-dark;
+        outline-offset: max(2px, 1px);
+      }
+
+      &:hover input ~ .checkmark,
+      input:disabled ~ .checkmark {
+        background-color: $gray-300;
+      }
+      input:focus ~ .checkmark {
+        outline: max(2px, 1px) solid $gray-300;
+        outline-offset: max(2px, 1px);
+      }
+      input:disabled ~ .checkmark {
+        &:after {
+          border-color: $gray-500;
+        }
+      }
+    }
+  }
+}
+
+/*
+* RADIO
+*/
+.custom-input.radio {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+
+  label {
+    margin-left: $size-md;
+    color: $gray-800;
+  }
+
+  > div {
+    height: rem(20);
+    width: rem(20);
+    border-radius: 50%;
+    > div {
+      display: block;
+      position: relative;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      height: rem(20);
+      width: rem(20);
+
+      > input {
+        height: rem(20);
+        width: rem(20);
+        opacity: 0;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .checkmark {
+        @include flex-center;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: rem(20);
+        width: rem(20);
+        border: rem(1) solid $gray-500;
+        pointer-events: none;
+        border-radius: 50%;
+        @include default-transition;
+
+        &:disabled {
+          cursor: no-drop;
+        }
+
+        &:after {
+          @include default-transition;
+          content: '';
+          position: absolute;
+          display: none;
+          border: rem(1) solid $gray-500;
+          height: rem(12);
+          width: rem(12);
+          border-radius: 50%;
+        }
+      }
+
+      input:checked ~ .checkmark {
+        background-color: $white;
+        &:after {
+          background-color: $primary;
+          display: block;
+        }
+      }
+
+      input:checked:hover:not([disabled]) ~ .checkmark,
+      input:checked:focus:not([disabled]) ~ .checkmark {
+        &:after {
+          background-color: $primary;
+        }
+      }
+
+      &:hover input ~ .checkmark,
+      input:focus ~ .checkmark,
+      input:disabled ~ .checkmark {
+        background-color: $gray-300;
+      }
+      input:disabled ~ .checkmark {
+        &:after {
+          border-color: $gray-500;
+        }
+      }
+    }
+  }
+}

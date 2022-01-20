@@ -1,0 +1,60 @@
+@import 'assets/styles/_constants.scss';
+@import 'assets/styles/_mixins.scss';
+
+.pull-request-card {
+  @include flex-column;
+  padding: $size-lg;
+  background-color: $white;
+  position: relative;
+
+  > *:not(:last-child) {
+    margin-bottom: $size-md;
+  }
+
+  h4 {
+    @include flex-space;
+    margin-top: 0;
+    margin-bottom: $size-lg;
+    .custom-button {
+      padding: 0;
+      color: $primary;
+      overflow: hidden;
+
+      > div {
+        color: $primary;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  > div:not(.pull-request-labels) {
+    span {
+      font-size: $font-xs;
+      color: $gray-700;
+    }
+  }
+
+  .pull-request-date {
+    position: absolute;
+    bottom: $size-md;
+    right: $size-md;
+    font-size: $font-xs;
+    color: $gray-700;
+  }
+
+  .pull-request-labels {
+    @include flex-start;
+    margin-top: -$size-md;
+
+    > span {
+      background-color: $secondary-light;
+      padding: $size-md;
+      margin-top: $size-md;
+      margin-right: $size-lg;
+      color: $white;
+      font-size: $font-xs;
+    }
+  }
+}

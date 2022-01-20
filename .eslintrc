@@ -23,8 +23,15 @@
     "plugin:jest/recommended",
     "plugin:jest/style",
     "plugin:prettier/recommended",
-    "plugin:testing-library/react"
+    "plugin:testing-library/react",
   ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
+  },
   "rules": {
     "@typescript-eslint/no-unused-vars": 2,
     "@typescript-eslint/no-useless-constructor": 2,
@@ -33,6 +40,7 @@
     "arrow-body-style": [2, "as-needed"],
     "camelcase": 1,
     "class-methods-use-this": 0,
+    "default-param-last": 0,
     "import/no-dynamic-require": 1,
     "import/no-named-as-default": 1,
     "import/no-webpack-loader-syntax": 1,
@@ -63,9 +71,9 @@
           { "pattern": "i18n/*", "group": "internal", "position": "before" },
           { "pattern": "utils/**/*", "group": "internal", "position": "before" },
           { "pattern": "actions/**/*", "group": "internal", "position": "before" },
-          { "pattern": "model/enums/**/*", "group": "internal", "position": "before" },
-          { "pattern": "model/types/**/*", "group": "internal", "position": "before" },
-          { "pattern": "model/**/*", "group": "internal", "position": "before" },
+          { "pattern": "models/enums/**/*", "group": "internal", "position": "before" },
+          { "pattern": "models/types/**/*", "group": "internal", "position": "before" },
+          { "pattern": "models/**/*", "group": "internal", "position": "before" },
           { "pattern": "components/base/**/*", "group": "internal", "position": "before" },
           { "pattern": "components/**/*", "group": "internal", "position": "before" }
         ],
