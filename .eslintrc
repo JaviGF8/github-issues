@@ -23,8 +23,15 @@
     "plugin:jest/recommended",
     "plugin:jest/style",
     "plugin:prettier/recommended",
-    "plugin:testing-library/react"
+    "plugin:testing-library/react",
   ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
+  },
   "rules": {
     "@typescript-eslint/no-unused-vars": 2,
     "@typescript-eslint/no-useless-constructor": 2,

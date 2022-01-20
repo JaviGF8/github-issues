@@ -1,5 +1,6 @@
 import path from 'path';
 import { Configuration, DefinePlugin } from 'webpack';
+import * as webpackDevServer from 'webpack-dev-server';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
@@ -16,6 +17,10 @@ const webpackConfig = (): Configuration => ({
     path: path.join(__dirname, '/build'),
     filename: 'build.js',
   },
+  devServer: {
+    historyApiFallback: true,
+    port: 3000,
+  },
   module: {
     rules: [
       {
@@ -29,6 +34,12 @@ const webpackConfig = (): Configuration => ({
       {
         test: /\.s?css$/,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(scss|sass)$/,
+        exclude: /\.module\.(scss|sass)$/,
+        loader: 'sass-loader',
+        sideEffects: true,
       },
     ],
   },

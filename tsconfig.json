@@ -23,13 +23,13 @@
     "removeComments": true,
     "downlevelIteration": true,
     "paths": {
-      "*": ["src/*"]
+      "@/*": ["src/*"]
     },
     "sourceMap": true,
     "noImplicitAny": false,
   },
   "include": [
-    "./src",
+    "src",
     "webpack.config.ts" ],
   "exclude": ["node_modules", "build"],
 }

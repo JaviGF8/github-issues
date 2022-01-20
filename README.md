@@ -26,7 +26,7 @@ npm start
 When everything is up and running, a new tab will show up in your browser. If not, you could go to:
 
 ```
-http://localhost:8080/
+http://localhost:3000/
 ```
 
 ### Testing
