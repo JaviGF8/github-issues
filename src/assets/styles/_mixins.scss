@@ -32,6 +32,16 @@
   transition: all $transition-mid ease-in-out;
 }
 
+@mixin default-shadow {
+  -webkit-box-shadow: 0px 0px $size-sm $size-sm rgba($gray-700, 0.25);
+  box-shadow: 0px 0px $size-sm $size-sm rgba($gray-700, 0.25);
+}
+
+@mixin inset-shadow {
+  -webkit-box-shadow: inset 0px 0px $size-sm $size-sm rgba($gray-700, 0.25);
+  box-shadow: inset 0px 0px $size-sm $size-sm rgba($gray-700, 0.25);
+}
+
 @mixin fullscreen() {
   position: absolute;
   top: 0;

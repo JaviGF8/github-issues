@@ -1,0 +1,38 @@
+@import 'assets/styles/_constants.scss';
+@import 'assets/styles/_mixins.scss';
+
+.pull-request-card {
+  @include flex-column;
+  padding: $size-lg;
+  background-color: $white;
+
+  > *:not(:last-child) {
+    margin-bottom: $size-md;
+  }
+
+  h4 {
+    @include flex-space;
+    margin-top: 0;
+    margin-bottom: $size-lg;
+  }
+
+  > div:not(.pull-request-labels) {
+    span {
+      font-size: $font-sm;
+    }
+  }
+
+  .pull-request-labels {
+    @include flex-start;
+    margin-top: -$size-md;
+
+    > span {
+      background-color: $secondary-light;
+      padding: $size-md;
+      margin-top: $size-md;
+      margin-right: $size-lg;
+      color: $white;
+      font-size: $font-xs;
+    }
+  }
+}
