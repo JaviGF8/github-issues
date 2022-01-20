@@ -17,6 +17,8 @@ export const initialState: StateType = {
 export const reducer = (state: StateType = initialState, action: Action): StateType => {
   const { type, payload } = action;
   switch (type) {
+    case DispatchTypes.SET_ERROR:
+      return { ...state, error: payload as string };
     case DispatchTypes.SET_ISSUES:
       return { ...state, issues: payload as IssueType[] };
     case DispatchTypes.SET_LOADING:

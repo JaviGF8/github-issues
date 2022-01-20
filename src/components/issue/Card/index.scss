@@ -5,6 +5,7 @@
   @include flex-column;
   padding: $size-lg;
   background-color: $white;
+  position: relative;
 
   > *:not(:last-child) {
     margin-bottom: $size-md;
@@ -16,11 +17,20 @@
     h4 {
       margin: 0;
       overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+
+      .custom-button {
+        @include flex-start;
+        padding: 0;
+        > div {
+          color: $primary;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
     }
 
-    span {
+    > span {
       margin-left: $size-md;
       background-color: $primary-light;
       padding: $size-sm;
@@ -29,9 +39,18 @@
     }
   }
 
-  > div:not(.issue-labels) {
+  .issue-date {
+    position: absolute;
+    bottom: 0;
+    right: $size-md;
+    font-size: $font-xs;
+    color: $gray-700;
+  }
+
+  > div:not(.issue-labels):not(.issue-title) {
     span {
-      font-size: $font-sm;
+      font-size: $font-xs;
+      color: $gray-700;
     }
   }
 

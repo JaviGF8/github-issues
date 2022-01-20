@@ -1,0 +1,28 @@
+@import 'assets/styles/_constants.scss';
+@import 'assets/styles/_mixins.scss';
+
+.element-page {
+  h2 {
+    margin-top: 0;
+  }
+
+  .comment {
+    margin-top: $size-lg;
+    padding: $size-lg;
+    background-color: $white;
+    position: relative;
+
+    > div:first-child {
+      color: $primary;
+      margin-bottom: $size-lg;
+    }
+
+    .comment-date {
+      position: absolute;
+      font-size: $font-xs;
+      color: $gray-700;
+      top: $size-lg;
+      right: $size-lg;
+    }
+  }
+}

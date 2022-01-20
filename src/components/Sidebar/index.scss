@@ -4,6 +4,7 @@
 #sidebar {
   @include default-shadow;
   @include flex-column;
+  @include default-transition;
   height: 100vh;
   width: calc(#{$sidebar-width} - #{$size-xl});
   background-color: $primary;
@@ -35,5 +36,28 @@
 
   .custom-button {
     align-self: flex-end;
+  }
+
+  @media screen and (max-width: $screen-lg) {
+    width: calc(#{$sidebar-width-small} - #{$size-xl});
+  }
+
+  @media screen and (max-width: $screen-md) {
+    flex-direction: row;
+    width: calc(100vw - #{$size-xl});
+    height: $sidebar-height-small;
+
+    h1 {
+      .custom-button {
+        font-size: $font-lg;
+      }
+    }
+    .custom-input {
+      margin-bottom: 0;
+      margin-right: $size-lg;
+    }
+    .custom-button {
+      align-self: center;
+    }
   }
 }

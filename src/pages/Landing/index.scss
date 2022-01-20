@@ -1,46 +1,26 @@
 @import 'assets/styles/_constants.scss';
 @import 'assets/styles/_mixins.scss';
 
-$page-max-height: calc(100vh - #{$size-xxl} - #{$size-lg} - #{$size-md});
+$page-max-height: calc(100vh - #{$size-xxl} - #{$size-xl});
 
 #landing-page {
   .columns {
     display: flex;
     flex-wrap: wrap;
-    padding-top: $size-lg;
 
     > div {
       width: 100%;
       overflow: hidden;
-
-      &:not(.column) {
-        @include default-shadow;
-        @include flex-start;
-        position: fixed;
-        top: 0;
-        left: $sidebar-width;
-        right: 0;
-        background-color: $primary-dark;
-        padding: $size-lg;
-
-        > div {
-          margin-right: $size-lg;
-          color: $secondary-light;
-          font-weight: bold;
-
-          span {
-            font-size: $font-sm;
-            color: $white;
-            font-weight: 100;
-          }
-        }
-      }
 
       &.column {
         position: relative;
         padding: $size-lg;
         width: calc(50% - #{$size-xl});
         max-height: calc(#{$page-max-height} - #{$size-xl});
+
+        @media screen and (max-width: $screen-lg) {
+          width: 100%;
+        }
 
         > div {
           @include inset-shadow;
